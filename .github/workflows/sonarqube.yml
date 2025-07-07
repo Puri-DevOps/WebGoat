@@ -33,7 +33,9 @@ jobs:
 
       - name: Install Maven dependencies
         run: |
-          sudo mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps"
+          # sudo mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps"
+          npx playwright@next install
+          npx playwright@next install-deps
           
       - name: Build with Maven
         run: mvn -B clean package -Dmaven.test.skip=true -Dspotless.skip=true --no-transfer-progress
