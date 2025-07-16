@@ -38,7 +38,8 @@ jobs:
           npx playwright@next install-deps
           
       - name: Build with Maven
-        run: mvn -B clean package -Dmaven.test.skip=true -Dspotless.skip=true --no-transfer-progress
+        # run: mvn -B clean package -Dmaven.test.skip=true -Dspotless.skip=true --no-transfer-progress
+        run: mvn clean install
 
       - name: SonarQube Scan
         env:
@@ -49,5 +50,7 @@ jobs:
             -Dsonar.projectKey=webgoat-sb-kim \
             -Dsonar.projectName='webgoat-sb-kim' \
             -Dsonar.sources=src/main/java \
+            -Dsonar.sources=src/main/resources \
+            -Dsonar.tests=src/test/java \
             -Dsonar.java.binaries=target/classes \
             org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
