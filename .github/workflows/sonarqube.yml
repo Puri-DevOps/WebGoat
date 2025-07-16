@@ -42,8 +42,6 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run:  |
           mvn -B verify -Dsonar.projectKey=webgoat-sb-kim2 -Dsonar.projectName='webgoat-sb-kim2' \
-            # -Dsonar.sources=src/main/java,src/main/resources \
-            # -Dsonar.tests=src/test/java \
             -Dsonar.maven.scanAll=true \
             -Dsonar.java.binaries=target/classes \
             -Dsonar.verbose=true \
