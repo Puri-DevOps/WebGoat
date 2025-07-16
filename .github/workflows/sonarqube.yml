@@ -40,9 +40,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run:  |
-          mvn -B verify --no-transfer-progress \
-            -Dsonar.projectKey=webgoat-sb-kim \
-            -Dsonar.projectName='webgoat-sb-kim' \
+          mvn -B verify --no-transfer-progress -Dsonar.projectKey=webgoat-sb-kim2 -Dsonar.projectName='webgoat-sb-kim2' \
             -Dsonar.sources=src/main/java \
             -Dsonar.tests=src/test/java \
             -Dsonar.java.binaries=target/classes \
