@@ -54,4 +54,4 @@ jobs:
             -Dsonar.tests=src/test/java \
             -Dsonar.java.binaries=target/classes \
             -Dsonar.verbose=true \
-            org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+            org.sonarsource.scanner.maven:sonar-maven-plugin:5.1:sonar
