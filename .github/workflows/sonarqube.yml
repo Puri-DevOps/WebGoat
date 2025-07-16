@@ -16,27 +16,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0          
+          fetch-depth: 0
 
       - name: Setup JDK
         uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: '23'
-          cache: maven            
+          cache: maven
 
       - name: Install Maven
         run: |
           sudo apt-get update -y
           sudo apt-get install -y maven
-          mvn -version          
+          mvn -version
 
       - name: Install Maven dependencies
         run: |
-          sudo mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps"
+          npx playwright@next install
+          npx playwright@next install-deps
           
       - name: Build with Maven
-        run: mvn -B clean package -Dmaven.test.skip=true -Dspotless.skip=true --no-transfer-progress
+        # run: mvn -B clean package -Dmaven.test.skip=true -Dspotless.skip=true --no-transfer-progress
+        run: mvn clean install
 
       - name: SonarQube Scan
         env:
@@ -47,5 +49,7 @@ jobs:
             -Dsonar.projectKey=webgoat-sb-kim \
             -Dsonar.projectName='webgoat-sb-kim' \
             -Dsonar.sources=src/main/java \
+            -Dsonar.tests=src/test/java \
             -Dsonar.java.binaries=target/classes \
+            -Dsonar.verbose=true \
             org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
