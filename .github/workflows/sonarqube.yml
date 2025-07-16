@@ -49,5 +49,6 @@ jobs:
             -Dsonar.projectKey=webgoat-sb-kim \
             -Dsonar.projectName='webgoat-sb-kim' \
             -Dsonar.sources=src/main/java \
+            -Dsonar.maven.scanAll=true \
             -Dsonar.java.binaries=target/classes \
             org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
