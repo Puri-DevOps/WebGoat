@@ -48,6 +48,6 @@ jobs:
           mvn -B verify \
             -Dsonar.projectKey=webgoat-sb-kim \
             -Dsonar.projectName='webgoat-sb-kim' \
-            -Dsonar.maven.scanAll=true \
+            -Dsonar.sources=src/main/java \
             -Dsonar.java.binaries=target/classes \
             org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
